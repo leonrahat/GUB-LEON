@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Leon Rahat — Professional Profile</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+      <style>
+         :root{
+         --navy-deep:#0A1524;
+         --navy-panel:#111F35;
+         --navy-card:#182A46;
+         --brass:#C6A144;
+         --brass-soft:rgba(198,161,68,0.16);
+         --parchment:#EDE8DA;
+         --ink-light:#B9C2D0;
+         --ink-mute:#7C8AA0;
+         --line:rgba(198,161,68,0.22);
+         --line-soft:rgba(237,232,218,0.09);
+         --radius:2px;
+         }
+         *{box-sizing:border-box;margin:0;padding:0;}
+         html{scroll-behavior:smooth;}
+         body{
+         background:var(--navy-deep);
+         color:var(--ink-light);
+         font-family:'Inter',sans-serif;
+         line-height:1.6;
+         -webkit-font-smoothing:antialiased;
+         }
+         ::selection{background:var(--brass);color:var(--navy-deep);}
+         a{color:inherit;text-decoration:none;}
+         .mono{font-family:'IBM Plex Mono',monospace;}
+         /* Layout shell */
+         .shell{
+         display:grid;
+         grid-template-columns:320px 1fr;
+         min-height:100vh;
+         }
+         /* Sidebar */
+         .sidebar{
+         background:var(--navy-panel);
+         border-right:1px solid var(--line-soft);
+         padding:56px 40px;
+         position:sticky;
+         top:0;
+         height:100vh;
+         display:flex;
+         flex-direction:column;
+         justify-content:space-between;
+         }
+         .brand .label{
+         font-family:'IBM Plex Mono',monospace;
+         font-size:11px;
+         letter-spacing:0.18em;
+         color:var(--brass);
+         text-transform:uppercase;
+         display:block;
+         margin-bottom:18px;
+         }
+         .brand h1{
+         font-family:'Fraunces',serif;
+         font-size:2.1rem;
+         font-weight:600;
+         color:var(--parchment);
+         line-height:1.15;
+         margin-bottom:10px;
+         }
+         .brand .role{
+         font-size:0.94rem;
+         color:var(--ink-light);
+         padding-bottom:20px;
+         border-bottom:1px solid var(--line-soft);
+         margin-bottom:26px;
+         }
+         .status-tag{
+         display:inline-flex;
+         align-items:center;
+         gap:8px;
+         font-family:'IBM Plex Mono',monospace;
+         font-size:11px;
+         letter-spacing:0.08em;
+         color:var(--brass);
+         text-transform:uppercase;
+         }
+         .status-dot{
+         width:6px;height:6px;border-radius:50%;
+         background:var(--brass);
+         box-shadow:0 0 0 3px var(--brass-soft);
+         }
+         nav.filetabs{
+         margin-top:34px;
+         display:flex;
+         flex-direction:column;
+         gap:2px;
+         }
+         nav.filetabs a{
+         font-family:'IBM Plex Mono',monospace;
+         font-size:12px;
+         letter-spacing:0.05em;
+         color:var(--ink-mute);
+         padding:12px 14px;
+         border-left:2px solid transparent;
+         display:flex;
+         justify-content:space-between;
+         transition:all .2s ease;
+         }
+         nav.filetabs a:hover,
+         nav.filetabs a.active{
+         color:var(--parchment);
+         border-left-color:var(--brass);
+         background:rgba(198,161,68,0.06);
+         }
+         nav.filetabs a .idx{color:var(--brass);}
+         .sidebar-foot{
+         padding-top:24px;
+         border-top:1px solid var(--line-soft);
+         font-size:12.5px;
+         color:var(--ink-mute);
+         }
+         .sidebar-foot a{color:var(--parchment);border-bottom:1px solid var(--line);}
+         .sidebar-foot p{margin-bottom:8px;}
+         /* Main content */
+         main{padding:0;}
+         section{
+         padding:88px 72px;
+         border-bottom:1px solid var(--line-soft);
+         max-width:920px;
+         }
+         section:last-of-type{border-bottom:none;}
+         .eyebrow{
+         font-family:'IBM Plex Mono',monospace;
+         font-size:11px;
+         letter-spacing:0.2em;
+         text-transform:uppercase;
+         color:var(--brass);
+         display:flex;
+         align-items:center;
+         gap:14px;
+         margin-bottom:22px;
+         }
+         .eyebrow::after{
+         content:'';
+         flex:1;
+         height:1px;
+         background:var(--line);
+         }
+         h2.title{
+         font-family:'Fraunces',serif;
+         font-size:2.5rem;
+         font-weight:600;
+         color:var(--parchment);
+         margin-bottom:28px;
+         }
+         /* Hero */
+         .hero{padding-top:100px;position:relative;}
+         .stamp{
+         position:absolute;
+         top:96px;
+         right:72px;
+         width:132px;
+         height:132px;
+         border:1.5px solid var(--brass);
+         border-radius:50%;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         text-align:center;
+         transform:rotate(8deg);
+         opacity:0.85;
+         }
+         .stamp span{
+         font-family:'IBM Plex Mono',monospace;
+         font-size:9.5px;
+         letter-spacing:0.14em;
+         text-transform:uppercase;
+         color:var(--brass);
+         line-height:1.6;
+         }
+         .hero p.intro-lead{
+         font-family:'Fraunces',serif;
+         font-size:1.55rem;
+         font-weight:400;
+         color:var(--parchment);
+         max-width:640px;
+         line-height:1.45;
+         margin-bottom:26px;
+         }
+         .hero p.intro-body{
+         font-size:1rem;
+         max-width:560px;
+         color:var(--ink-light);
+         margin-bottom:36px;
+         }
+         .hero .accent{color:var(--brass);font-style:italic;font-family:'Fraunces',serif;}
+         .field-row{
+         display:flex;
+         gap:56px;
+         flex-wrap:wrap;
+         padding-top:28px;
+         border-top:1px solid var(--line-soft);
+         }
+         .field dt{
+         font-family:'IBM Plex Mono',monospace;
+         font-size:10.5px;
+         letter-spacing:0.14em;
+         text-transform:uppercase;
+         color:var(--ink-mute);
+         margin-bottom:6px;
+         }
+         .field dd{
+         font-size:0.98rem;
+         color:var(--parchment);
+         }
+         /* Education */
+         .record{
+         display:grid;
+         grid-template-columns:150px 1fr;
+         gap:24px;
+         padding:26px 0;
+         border-top:1px solid var(--line-soft);
+         }
+         .record:last-child{border-bottom:1px solid var(--line-soft);}
+         .record .period{
+         font-family:'IBM Plex Mono',monospace;
+         font-size:12px;
+         color:var(--brass);
+         letter-spacing:0.02em;
+         padding-top:3px;
+         }
+         .record .period .status{
+         display:block;
+         margin-top:6px;
+         font-size:10px;
+         letter-spacing:0.12em;
+         color:var(--ink-mute);
+         text-transform:uppercase;
+         }
+         .record h3{
+         font-family:'Fraunces',serif;
+         font-size:1.28rem;
+         font-weight:600;
+         color:var(--parchment);
+         margin-bottom:4px;
+         }
+         .record .org{
+         font-size:0.95rem;
+         color:var(--ink-light);
+         }
+         /* Experience */
+         .exp-card{
+         border:1px solid var(--line-soft);
+         background:var(--navy-card);
+         padding:36px 40px;
+         position:relative;
+         border-left:3px solid var(--brass);
+         }
+         .exp-card .role{
+         font-family:'Fraunces',serif;
+         font-size:1.5rem;
+         color:var(--parchment);
+         margin-bottom:6px;
+         }
+         .exp-card .org-line{
+         font-size:0.95rem;
+         color:var(--ink-light);
+         margin-bottom:22px;
+         padding-bottom:20px;
+         border-bottom:1px solid var(--line-soft);
+         }
+         .exp-card .org-line b{color:var(--brass-text,var(--brass));font-weight:600;}
+         .exp-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+         .exp-list li{
+         padding-left:22px;
+         position:relative;
+         font-size:0.96rem;
+         color:var(--ink-light);
+         }
+         .exp-list li::before{
+         content:'—';
+         position:absolute;
+         left:0;
+         color:var(--brass);
+         }
+         /* Skills */
+         .skills-grid{
+         display:grid;
+         grid-template-columns:repeat(2,1fr);
+         gap:14px;
+         }
+         .skill-item{
+         display:flex;
+         align-items:center;
+         justify-content:space-between;
+         gap:18px;
+         padding:20px 24px;
+         border:1px solid var(--line-soft);
+         background:var(--navy-panel);
+         transition:border-color .2s ease, transform .2s ease;
+         }
+         .skill-item:hover{
+         border-color:var(--brass);
+         transform:translateX(4px);
+         }
+         .skill-item .name{
+         font-size:0.98rem;
+         color:var(--parchment);
+         font-weight:500;
+         }
+         .skill-item .code{
+         font-family:'IBM Plex Mono',monospace;
+         font-size:11px;
+         color:var(--ink-mute);
+         }
+         /* Contact / footer section */
+         .contact-wrap{
+         display:flex;
+         justify-content:space-between;
+         align-items:flex-end;
+         flex-wrap:wrap;
+         gap:32px;
+         }
+         .contact-wrap p{
+         max-width:480px;
+         color:var(--ink-light);
+         font-size:1rem;
+         }
+         .cta-btn{
+         display:inline-flex;
+         align-items:center;
+         gap:10px;
+         padding:16px 30px;
+         border:1px solid var(--brass);
+         color:var(--brass);
+         font-family:'IBM Plex Mono',monospace;
+         font-size:12px;
+         letter-spacing:0.1em;
+         text-transform:uppercase;
+         transition:background .2s ease,color .2s ease;
+         }
+         .cta-btn:hover{background:var(--brass);color:var(--navy-deep);}
+         footer{
+         padding:36px 72px;
+         font-family:'IBM Plex Mono',monospace;
+         font-size:11px;
+         color:var(--ink-mute);
+         letter-spacing:0.04em;
+         }
+         /* reveal on scroll */
+         .reveal{
+         opacity:0;
+         transform:translateY(18px);
+         transition:opacity .7s ease, transform .7s ease;
+         }
+         .reveal.in{opacity:1;transform:translateY(0);}
+         @media (prefers-reduced-motion: reduce){
+         .reveal{opacity:1;transform:none;transition:none;}
+         html{scroll-behavior:auto;}
+         }
+         /* Mobile nav toggle */
+         .mobile-bar{display:none;}
+         @media (max-width:900px){
+         .shell{grid-template-columns:1fr;}
+         .sidebar{
+         position:relative;
+         height:auto;
+         padding:32px 24px;
+         border-right:none;
+         border-bottom:1px solid var(--line-soft);
+         }
+         nav.filetabs{
+         flex-direction:row;
+         flex-wrap:wrap;
+         margin-top:22px;
+         }
+         nav.filetabs a{border-left:none;border-bottom:2px solid transparent;padding:8px 10px;}
+         nav.filetabs a:hover, nav.filetabs a.active{border-left-color:transparent;border-bottom-color:var(--brass);}
+         section{padding:56px 26px;}
+         .stamp{display:none;}
+         .record{grid-template-columns:1fr;gap:8px;}
+         .skills-grid{grid-template-columns:1fr;}
+         .sidebar-foot{margin-top:24px;}
+         }
+      </style>
+   </head>
+   <body>
+      <div class="shell">
+         <!-- SIDEBAR -->
+         <aside class="sidebar">
+            <div>
+               <div class="brand">
+                  <span class="label">Professional Profile</span>
+                  <h1>Leon<br>Rahat</h1>
+                  <p class="role">BBA Student · Management</p>
+                  <span class="status-tag"><span class="status-dot"></span>Currently Active</span>
+               </div>
+               <nav class="filetabs" id="filetabs">
+                  <a href="#introduction"><span>Introduction</span><span class="idx">01</span></a>
+                  <a href="#education"><span>Education</span><span class="idx">02</span></a>
+                  <a href="#experience"><span>Experience</span><span class="idx">03</span></a>
+                  <a href="#skills"><span>Core Skills</span><span class="idx">04</span></a>
+                  <a href="#contact"><span>Contact</span><span class="idx">05</span></a>
+               </nav>
+            </div>
+            <div class="sidebar-foot">
+               <p>Green University of Bangladesh</p>
+               <p>Dhaka, Bangladesh</p>
+               <p><a href="#contact">Get in touch →</a></p>
+            </div>
+         </aside>
+         <!-- MAIN -->
+         <main>
+            <section id="introduction" class="hero reveal">
+               <div class="stamp"><span>Profile<br>On File<br>2026</span></div>
+               <span class="eyebrow">01 — Introduction</span>
+               <p class="intro-lead">A Business Administration student building a foundation in <span class="accent">strategy, structure, and steady judgment.</span></p>
+               <p class="intro-body">I'm Leon Rahat, currently pursuing my Bachelor's in Business Administration. Alongside my studies, I work within a company's management department, where day-to-day decisions turn academic theory into practical habit — reading situations quickly, staying calm under pressure, and keeping people and priorities aligned.</p>
+               <dl class="field-row">
+                  <div class="field">
+                     <dt>Name</dt>
+                     <dd>Leon Rahat</dd>
+                  </div>
+                  <div class="field">
+                     <dt>Status</dt>
+                     <dd>BBA Student — Present</dd>
+                  </div>
+                  <div class="field">
+                     <dt>Current Role</dt>
+                     <dd>Managing Department, Present</dd>
+                  </div>
+                  <div class="field">
+                     <dt>Focus</dt>
+                     <dd>Strategy &amp; Operations</dd>
+                  </div>
+               </dl>
+            </section>
+            <section id="education" class="reveal">
+               <span class="eyebrow">02 — Education</span>
+               <h2 class="title">Academic Record</h2>
+               <div class="record">
+                  <div class="period">2026<span class="status">In Progress</span></div>
+                  <div>
+                     <h3>Bachelor of Business Administration</h3>
+                     <p class="org">Green University of Bangladesh — Present</p>
+                  </div>
+               </div>
+               <div class="record">
+                  <div class="period">2023 – 2025<span class="status">Completed</span></div>
+                  <div>
+                     <h3>Higher Secondary Certificate (HSC)</h3>
+                     <p class="org">Amirjan College</p>
+                  </div>
+               </div>
+               <div class="record">
+                  <div class="period">2021 – 2023<span class="status">Completed</span></div>
+                  <div>
+                     <h3>Secondary School Certificate (SSC)</h3>
+                     <p class="org">Gabtoli High School</p>
+                  </div>
+               </div>
+            </section>
+            <section id="experience" class="reveal">
+               <span class="eyebrow">03 — Experience</span>
+               <h2 class="title">Current Position</h2>
+               <div class="exp-card">
+                  <p class="role">Management Department</p>
+                  <p class="org-line"><b>Present</b> · Full-time, ongoing</p>
+                  <ul class="exp-list">
+                     <li>Supporting daily operations and coordination within the management department.</li>
+                     <li>Applying classroom knowledge in strategic planning and organization to real work situations.</li>
+                     <li>Working directly with colleagues and processes where clear decisions and adaptability matter most.</li>
+                     <li>Building hands-on experience that complements ongoing BBA studies.</li>
+                  </ul>
+               </div>
+            </section>
+            <section id="skills" class="reveal">
+               <span class="eyebrow">04 — Core Skills</span>
+               <h2 class="title">Capabilities</h2>
+               <div class="skills-grid">
+                  <div class="skill-item"><span class="name">Strategic Planning</span><span class="code">SK.01</span></div>
+                  <div class="skill-item"><span class="name">Problem Solving</span><span class="code">SK.02</span></div>
+                  <div class="skill-item"><span class="name">Crisis Management</span><span class="code">SK.03</span></div>
+                  <div class="skill-item"><span class="name">Creative Thinking</span><span class="code">SK.04</span></div>
+                  <div class="skill-item"><span class="name">Data Analysis</span><span class="code">SK.05</span></div>
+                  <div class="skill-item"><span class="name">Customer Orientation</span><span class="code">SK.06</span></div>
+                  <div class="skill-item"><span class="name">Adaptability to Change</span><span class="code">SK.07</span></div>
+               </div>
+            </section>
+            <section id="contact" class="reveal">
+               <span class="eyebrow">05 — Contact</span>
+               <h2 class="title">Let's Connect</h2>
+               <div class="contact-wrap">
+                  <p>Open to opportunities, conversations, and collaborations related to management, strategy, and business operations. Reach out any time.</p>
+                  <a class="cta-btn" href="mailto:leon.rahat@example.com">Email Me →</a>
+               </div>
+            </section>
+            <footer>
+               © 2026 Leon Rahat · Business Administration Student · Green University of Bangladesh
+            </footer>
+         </main>
+      </div>
+      <script>
+         // Scroll-reveal
+         const revealEls = document.querySelectorAll('.reveal');
+         const io = new IntersectionObserver((entries)=>{
+           entries.forEach(e=>{
+             if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+           });
+         },{threshold:0.12});
+         revealEls.forEach(el=>io.observe(el));
+         
+         // Active nav tab on scroll
+         const tabs = document.querySelectorAll('#filetabs a');
+         const sections = document.querySelectorAll('main section[id]');
+         const navIo = new IntersectionObserver((entries)=>{
+           entries.forEach(entry=>{
+             const id = entry.target.getAttribute('id');
+             const tab = document.querySelector('#filetabs a[href="#'+id+'"]');
+             if(entry.isIntersecting){
+               tabs.forEach(t=>t.classList.remove('active'));
+               if(tab) tab.classList.add('active');
+             }
+           });
+         },{rootMargin:'-40% 0px -50% 0px'});
+         sections.forEach(s=>navIo.observe(s));
+      </script>
+   </body>
+</html>
